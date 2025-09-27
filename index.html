@@ -118,7 +118,7 @@
     <div class="bottom-banner">
       <a href="https://tnkdbf.tradeinn.com/ts/i5534887/tsc?typ=r&amc=con.blbn.524297.533805.14119786&smc=review-mares-xvision-mask&rmd=3&trg=https%3A%2F%2Fwww.tradeinn.com%2Fdiveinn%2Fen%2Fmares-x-vision-ultra-ls-diving-mask%2F135947550%2Fp"
          target="_blank" rel="sponsored"
-         onclick="fbq('track', 'Lead'); fbq('trackCustom', 'Checkout_DiveInn');">
+         onclick="if (typeof fbq==='function'){ fbq('track','Lead'); fbq('trackCustom','Checkout_DiveInn'); }">
         <img src="https://res.cloudinary.com/i19s/image/upload/dpr_auto,f_auto,fl_lossy,q_50,w_auto/v1/prod_creatives/net_253/adv_77651/cr_11e60986-dea0-50ec-a64d-e2f92857ceda" alt="DiveInn Banner" />
       </a>
     </div>
@@ -139,4 +139,53 @@
       </span>
 
       <span id="footer-line1-lv" class="footer-line lang-content">
-        © <strong><a href="https://puz
+        © <strong><a href="https://puziryov.com" target="_blank" rel="noopener noreferrer" style="color:#007bff; text-decoration:none;">#Vitaliy Puziryov</a>, SSI instruktors-treneris</strong>
+      </span>
+      <span id="footer-line2-lv" class="footer-line lang-content">
+        Projekta <a href="https://iscuba.online" target="_blank" rel="noopener noreferrer">iScuba Online</a> dibinātājs
+      </span>
+    </div>
+  </div>
+
+  <script>
+    const btnRu = document.getElementById('btn-ru');
+    const btnEn = document.getElementById('btn-en');
+    const btnLv = document.getElementById('btn-lv');
+
+    function showLang(lang) {
+      // Переключаем активную кнопку
+      [btnRu, btnEn, btnLv].forEach(b => b.classList.remove('active'));
+      ({ru:btnRu, en:btnEn, lv:btnLv}[lang]).classList.add('active');
+
+      // Прячем все языковые блоки
+      document.querySelectorAll('.lang-content').forEach(el => el.classList.remove('active'));
+
+      // Включаем нужный язык по суффиксу id (-ru / -en / -lv)
+      document.querySelectorAll("[id$='-" + lang + "'].lang-content").forEach(el => el.classList.add('active'));
+
+      // Меняем текст кнопки покупки
+      const buy = document.getElementById('buy-btn');
+      buy.textContent = (lang === 'en') ? 'Buy at DiveInn' : (lang === 'lv' ? 'Pirkt DiveInn' : 'Купить на DiveInn');
+    }
+
+    btnRu.addEventListener('click', () => showLang('ru'));
+    btnEn.addEventListener('click', () => showLang('en'));
+    btnLv.addEventListener('click', () => showLang('lv'));
+
+    // Стартово RU
+    showLang('ru');
+
+    // Пиксельные события оставляем как есть; добавлены безопасные проверки
+    setTimeout(() => {
+      if (typeof fbq === 'function') fbq('trackCustom', 'ViewContent_Equip_Review_7s');
+    }, 7000);
+
+    function onBuyClick() {
+      if (typeof fbq === 'function') {
+        fbq('track', 'Lead');
+        fbq('trackCustom', 'Checkout_DiveInn');
+      }
+    }
+  </script>
+</body>
+</html>
