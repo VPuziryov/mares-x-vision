@@ -112,7 +112,7 @@
        target="_blank"
        class="btn-buy"
        onclick="onBuyClick();">
-      Купить на DiveInn
+      Узнать стоимость
     </a>
 
     <div class="bottom-banner">
@@ -165,7 +165,7 @@
 
       // Меняем текст кнопки покупки
       const buy = document.getElementById('buy-btn');
-      buy.textContent = (lang === 'en') ? 'Buy at DiveInn' : (lang === 'lv' ? 'Pirkt DiveInn' : 'Купить на DiveInn');
+      buy.textContent = (lang === 'en') ? 'Check price' : (lang === 'lv' ? 'Uzzinātcenu' : 'Узнать стоимость');
     }
 
     btnRu.addEventListener('click', () => showLang('ru'));
